@@ -122,17 +122,17 @@ body {
   mix-blend-mode: overlay;
 }
 
-/* Above-fold rise — subtler, snappier */
+/* Above-fold rise — smooth expo ease */
 @keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.rise { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-.rise-1 { animation-delay: 0.05s; }
-.rise-2 { animation-delay: 0.15s; }
-.rise-3 { animation-delay: 0.28s; }
-.rise-4 { animation-delay: 0.42s; }
-.rise-5 { animation-delay: 0.58s; }
+.rise { animation: rise 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.rise-1 { animation-delay: 0.08s; }
+.rise-2 { animation-delay: 0.2s; }
+.rise-3 { animation-delay: 0.36s; }
+.rise-4 { animation-delay: 0.52s; }
+.rise-5 { animation-delay: 0.68s; }
 
 /* Marquee */
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }

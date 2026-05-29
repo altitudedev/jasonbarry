@@ -47,7 +47,6 @@ export const whoThisIsFor = [
   "Junior golfers interested in Division I, II, or III college golf",
   "Players unsure where they currently fit competitively",
   "Families looking for structure, timelines, and recruiting strategy",
-  "Players seeking the right long-term fit academically and athletically",
 ];
 
 export const whatThisProvides = [
@@ -122,7 +121,6 @@ export const familiesIWorkWith = [
   "Families seeking honest feedback and realistic guidance",
   "Players unsure where they currently fit competitively",
   "Families navigating the recruiting process for the first time",
-  "Players seeking the right long-term fit academically and athletically",
 ];
 
 /* ABOUT PAGE COPY */

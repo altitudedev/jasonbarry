@@ -142,11 +142,13 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 05 WHO THIS IS NOT FOR — dark, card grid */}
+      {/* 05 WHO THIS IS NOT FOR — with parallax background */}
       <Section
         eyebrow="Who this is not for"
         num="05"
         title={<>Honest about who this isn't for.</>}
+        bgImage="/images/NCAA-tee-markers.jpg"
+        bgPosition="center 60%"
       >
         <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
           {whoThisIsNotFor.map((n, i) => (
