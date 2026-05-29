@@ -9,7 +9,6 @@ import CredentialMarquee from "@/components/CredentialMarquee";
 import { Section } from "@/components/Section";
 import { StatCard } from "@/components/StatCard";
 import { PointCard } from "@/components/PointCard";
-import { ServiceCard, type IconName } from "@/components/ServiceCard";
 import {
   homeHero,
   contact,
@@ -102,7 +101,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 03 WHAT THIS PROVIDES — service cards over JB watermark */}
+      {/* 03 WHAT THIS PROVIDES — clean list layout */}
       <section className="relative bg-[color:var(--color-bg-deep)] rule overflow-hidden">
         <AnimatedJB size={620} opacity={0.05} position="right" />
         <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12 py-24 lg:py-36">
@@ -110,11 +109,13 @@ export default function Home() {
             <p className="eyebrow"><span className="eyebrow-num">03</span>What this advisory provides</p>
             <Reveal as="h2" className="section-h2 mt-5">Strategic guidance, end to end.</Reveal>
           </header>
-          <div className="mt-12 lg:mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            {whatThisProvides.map((title, i) => {
-              const iconNames: IconName[] = ["Gauge", "Compass", "Calendar", "Flag", "MessageSquare", "ClipboardCheck"];
-              return <ServiceCard key={title} num={i + 1} title={title} iconName={iconNames[i]} delay={i * 60} />;
-            })}
+          <div className="mt-12 lg:mt-16 grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
+            {whatThisProvides.map((title, i) => (
+              <Reveal key={title} delay={i * 50} as="div" className="border-t border-[color:var(--color-line)] py-5 flex items-baseline gap-5">
+                <span className="text-[color:var(--color-accent)] mono text-[13px] font-medium">{String(i + 1).padStart(2, "0")}</span>
+                <span className="h-display text-[18px] md:text-[20px] lg:text-[22px] tracking-tight leading-[1.15] text-[color:var(--color-fg)]">{title}</span>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
