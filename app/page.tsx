@@ -9,8 +9,7 @@ import CredentialMarquee from "@/components/CredentialMarquee";
 import { Section } from "@/components/Section";
 import { StatCard } from "@/components/StatCard";
 import { PointCard } from "@/components/PointCard";
-import { ServiceCard } from "@/components/ServiceCard";
-import { Gauge, Compass, Calendar, Flag, MessageSquare, ClipboardCheck } from "lucide-react";
+import { ServiceCard, type IconName } from "@/components/ServiceCard";
 import {
   homeHero,
   contact,
@@ -120,9 +119,8 @@ export default function Home() {
           </header>
           <div className="mt-12 lg:mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {whatThisProvides.map((title, i) => {
-              const icons = [Gauge, Compass, Calendar, Flag, MessageSquare, ClipboardCheck];
-              const Icon = icons[i] ?? Gauge;
-              return <ServiceCard key={title} num={i + 1} title={title} icon={Icon} delay={i * 60} />;
+              const iconNames: IconName[] = ["Gauge", "Compass", "Calendar", "Flag", "MessageSquare", "ClipboardCheck"];
+              return <ServiceCard key={title} num={i + 1} title={title} iconName={iconNames[i]} delay={i * 60} />;
             })}
           </div>
         </div>
