@@ -27,11 +27,11 @@ export default function Home() {
     <>
       <ScrollProgress />
 
-      {/* HERO — face visible, copy lives in bottom-left scrim */}
+      {/* HERO — action coaching scene, no portrait */}
       <Hero
-        src="/images/portrait-2.jpg"
-        alt="Jason Barry"
-        objectPosition="60% 22%"
+        src="/images/college-jb-golf.png"
+        alt="Jason Barry coaching a junior golfer at Springdale Golf Club"
+        objectPosition="60% 30%"
         eyebrow="Honest recruiting strategy"
         headline={
           <>
