@@ -80,32 +80,25 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 02 THE PROBLEM — copy left + photo right (alternating from 01 inversion) */}
+      {/* 02 THE PROBLEM — text-focused, no photo (not about Jason) */}
       <Section
         eyebrow="The problem"
         num="02"
         title={<>Recruiting has become confusing for families.</>}
       >
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-7 space-y-6">
-            {confusingForFamilies.map((p, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <p className="body text-[16px] lg:text-[17px] leading-[1.7] max-w-2xl">{p}</p>
-              </Reveal>
-            ))}
-            <Reveal delay={240}>
-              <div className="pt-2 inline-flex flex-wrap gap-2">
-                {["Honest evaluation", "Experienced perspective", "Clear guidance"].map((t) => (
-                  <span key={t} className="tag"><span>{t}</span></span>
-                ))}
-              </div>
+        <div className="max-w-3xl space-y-6">
+          {confusingForFamilies.map((p, i) => (
+            <Reveal key={i} delay={i * 80}>
+              <p className="body text-[17px] lg:text-[19px] leading-[1.7]">{p}</p>
             </Reveal>
-          </div>
-          <div className="lg:col-span-5">
-            <Reveal>
-              <ParallaxImage src="/images/college-jb-golf.png" alt="College golf" aspect="5/6" />
-            </Reveal>
-          </div>
+          ))}
+          <Reveal delay={240}>
+            <div className="pt-4 inline-flex flex-wrap gap-3">
+              {["Honest evaluation", "Experienced perspective", "Clear guidance"].map((t) => (
+                <span key={t} className="tag"><span>{t}</span></span>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </Section>
 
