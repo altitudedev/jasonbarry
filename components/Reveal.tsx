@@ -7,11 +7,13 @@ export default function Reveal({
   delay = 0,
   className = "",
   as: As = "div",
+  direction = "up",
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
   as?: React.ElementType;
+  direction?: "up" | "left" | "right" | "fade";
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [shown, setShown] = useState(false);
@@ -26,18 +28,25 @@ export default function Reveal({
           io.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -80px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
     io.observe(node);
     return () => io.disconnect();
   }, []);
 
+  const transforms = {
+    up: "translate-y-6",
+    left: "translate-x-8",
+    right: "-translate-x-8",
+    fade: "",
+  };
+
   return (
     <As
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
-        shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+      className={`transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        shown ? "opacity-100 translate-y-0 translate-x-0" : `opacity-0 ${transforms[direction]}`
       } ${className}`}
     >
       {children}

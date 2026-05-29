@@ -8,9 +8,6 @@ import ParallaxImage from "@/components/ParallaxImage";
 import CredentialMarquee from "@/components/CredentialMarquee";
 import { Section } from "@/components/Section";
 import { StatCard } from "@/components/StatCard";
-import { PointCard } from "@/components/PointCard";
-import { ServiceCard } from "@/components/ServiceCard";
-import { Gauge, Compass, Calendar, Flag, MessageSquare, ClipboardCheck } from "lucide-react";
 import {
   homeHero,
   contact,
@@ -27,11 +24,11 @@ export default function Home() {
     <>
       <ScrollProgress />
 
-      {/* HERO — face visible, copy lives in bottom-left scrim */}
+      {/* HERO — action coaching scene, no portrait */}
       <Hero
-        src="/images/portrait-2.jpg"
-        alt="Jason Barry"
-        objectPosition="60% 22%"
+        src="/images/college-jb-golf.png"
+        alt="Jason Barry coaching a junior golfer at Springdale Golf Club"
+        objectPosition="60% 30%"
         eyebrow="Honest recruiting strategy"
         headline={
           <>
@@ -81,36 +78,29 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 02 THE PROBLEM — copy left + photo right (alternating from 01 inversion) */}
+      {/* 02 THE PROBLEM — text-focused, no photo (not about Jason) */}
       <Section
         eyebrow="The problem"
         num="02"
         title={<>Recruiting has become confusing for families.</>}
       >
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-7 space-y-6">
-            {confusingForFamilies.map((p, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <p className="body text-[16px] lg:text-[17px] leading-[1.7] max-w-2xl">{p}</p>
-              </Reveal>
-            ))}
-            <Reveal delay={240}>
-              <div className="pt-2 inline-flex flex-wrap gap-2">
-                {["Honest evaluation", "Experienced perspective", "Clear guidance"].map((t) => (
-                  <span key={t} className="tag"><span>{t}</span></span>
-                ))}
-              </div>
+        <div className="max-w-3xl space-y-6">
+          {confusingForFamilies.map((p, i) => (
+            <Reveal key={i} delay={i * 80}>
+              <p className="body text-[17px] lg:text-[19px] leading-[1.7]">{p}</p>
             </Reveal>
-          </div>
-          <div className="lg:col-span-5">
-            <Reveal>
-              <ParallaxImage src="/images/college-jb-golf.png" alt="College golf" aspect="5/6" />
-            </Reveal>
-          </div>
+          ))}
+          <Reveal delay={240}>
+            <div className="pt-4 inline-flex flex-wrap gap-3">
+              {["Honest evaluation", "Experienced perspective", "Clear guidance"].map((t) => (
+                <span key={t} className="tag"><span>{t}</span></span>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </Section>
 
-      {/* 03 WHAT THIS PROVIDES — service cards over JB watermark */}
+      {/* 03 WHAT THIS PROVIDES — clean list layout */}
       <section className="relative bg-[color:var(--color-bg-deep)] rule overflow-hidden">
         <AnimatedJB size={620} opacity={0.05} position="right" />
         <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12 py-24 lg:py-36">
@@ -118,39 +108,48 @@ export default function Home() {
             <p className="eyebrow"><span className="eyebrow-num">03</span>What this advisory provides</p>
             <Reveal as="h2" className="section-h2 mt-5">Strategic guidance, end to end.</Reveal>
           </header>
-          <div className="mt-12 lg:mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            {whatThisProvides.map((title, i) => {
-              const icons = [Gauge, Compass, Calendar, Flag, MessageSquare, ClipboardCheck];
-              const Icon = icons[i] ?? Gauge;
-              return <ServiceCard key={title} num={i + 1} title={title} icon={Icon} delay={i * 60} />;
-            })}
+          <div className="mt-12 lg:mt-16 grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
+            {whatThisProvides.map((title, i) => (
+              <Reveal key={title} delay={i * 50} as="div" className="border-t border-[color:var(--color-line)] py-5 flex items-baseline gap-5">
+                <span className="text-[color:var(--color-accent)] mono text-[13px] font-medium">{String(i + 1).padStart(2, "0")}</span>
+                <span className="h-display text-[18px] md:text-[20px] lg:text-[22px] tracking-tight leading-[1.15] text-[color:var(--color-fg)]">{title}</span>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 04 WHO THIS IS FOR — cream block, card grid */}
+      {/* 04 WHO THIS IS FOR — cream block, clean list */}
       <Section
         eyebrow="Who this is for"
         num="04"
         title={<>Built for families who want the truth.</>}
         tone="paper"
       >
-        <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
+        <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
           {whoThisIsFor.map((n, i) => (
-            <PointCard key={n} num={i + 1} text={n} variant="fit" tone="paper" delay={i * 60} />
+            <Reveal key={n} delay={i * 50} as="div" className="border-t border-black/15 py-5 flex items-baseline gap-5">
+              <span className="text-[color:var(--color-accent)] mono text-[13px] font-medium">{String(i + 1).padStart(2, "0")}</span>
+              <span className="h-display text-[18px] md:text-[20px] lg:text-[22px] tracking-tight leading-[1.15] text-black/90">{n}</span>
+            </Reveal>
           ))}
         </div>
       </Section>
 
-      {/* 05 WHO THIS IS NOT FOR — dark, card grid */}
+      {/* 05 WHO THIS IS NOT FOR — with parallax background, clean list */}
       <Section
         eyebrow="Who this is not for"
         num="05"
         title={<>Honest about who this isn't for.</>}
+        bgImage="/images/NCAA-tee-markers.jpg"
+        bgPosition="center 60%"
       >
-        <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
+        <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
           {whoThisIsNotFor.map((n, i) => (
-            <PointCard key={n} num={i + 1} text={n} variant="unfit" tone="dark" delay={i * 60} />
+            <Reveal key={n} delay={i * 50} as="div" className="border-t border-white/15 py-5 flex items-baseline gap-5">
+              <span className="text-[color:var(--color-accent)] mono text-[13px] font-medium">{String(i + 1).padStart(2, "0")}</span>
+              <span className="h-display text-[18px] md:text-[20px] lg:text-[22px] tracking-tight leading-[1.15] text-white">{n}</span>
+            </Reveal>
           ))}
         </div>
       </Section>

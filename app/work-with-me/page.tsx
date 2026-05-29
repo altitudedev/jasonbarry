@@ -7,9 +7,6 @@ import AnimatedJB from "@/components/AnimatedJB";
 import ParallaxImage from "@/components/ParallaxImage";
 import { Section } from "@/components/Section";
 import { CheckList } from "@/components/CheckList";
-import { PointCard } from "@/components/PointCard";
-import { ServiceCard } from "@/components/ServiceCard";
-import { GraduationCap, Calendar, Flag, MessageSquare, UserCheck, Compass } from "lucide-react";
 import {
   contact,
   workHero,
@@ -28,9 +25,9 @@ export default function WorkPage() {
       <ScrollProgress />
 
       <Hero
-        src="/images/portrait-1.jpg"
-        alt="Jason coaching a player"
-        objectPosition="60% 40%"
+        src="/images/iron-setup.jpg"
+        alt="Golf club setup on the course"
+        objectPosition="center 60%"
         eyebrow="Recruiting Advisory · 2026 cycle"
         headline={
           <>
@@ -96,19 +93,20 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* 03 ONGOING ADVISORY SUPPORT — service card grid */}
+      {/* 03 ONGOING ADVISORY SUPPORT — clean list */}
       <Section
         eyebrow="Ongoing advisory support"
         num="03"
         title={<>Tailored, not packaged.</>}
         intro={<>{ongoingAdvisory.intro}</>}
       >
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-          {ongoingAdvisory.items.map((title, i) => {
-            const icons = [GraduationCap, Calendar, Flag, MessageSquare, UserCheck, Compass];
-            const Icon = icons[i] ?? Compass;
-            return <ServiceCard key={title} num={i + 1} title={title} icon={Icon} delay={i * 60} />;
-          })}
+        <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
+          {ongoingAdvisory.items.map((title, i) => (
+            <Reveal key={title} delay={i * 50} as="div" className="border-t border-[color:var(--color-line)] py-5 flex items-baseline gap-5">
+              <span className="text-[color:var(--color-accent)] mono text-[13px] font-medium">{String(i + 1).padStart(2, "0")}</span>
+              <span className="h-display text-[18px] md:text-[20px] lg:text-[22px] tracking-tight leading-[1.15] text-[color:var(--color-fg)]">{title}</span>
+            </Reveal>
+          ))}
         </div>
         <Reveal delay={200} className="mt-12 max-w-2xl">
           <p className="h-display text-[20px] md:text-[24px] leading-[1.15] text-[color:var(--color-fg)]">
@@ -117,29 +115,35 @@ export default function WorkPage() {
         </Reveal>
       </Section>
 
-      {/* 04 FAMILIES I TYPICALLY WORK WITH — cream, card grid */}
+      {/* 04 FAMILIES I TYPICALLY WORK WITH — cream, clean list */}
       <Section
         eyebrow="Families I typically work with"
         num="04"
         title={<>The right fit, both ways.</>}
         tone="paper"
       >
-        <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
+        <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
           {familiesIWorkWith.map((n, i) => (
-            <PointCard key={n} num={i + 1} text={n} variant="fit" tone="paper" delay={i * 60} />
+            <Reveal key={n} delay={i * 50} as="div" className="border-t border-black/15 py-5 flex items-baseline gap-5">
+              <span className="text-[color:var(--color-accent)] mono text-[13px] font-medium">{String(i + 1).padStart(2, "0")}</span>
+              <span className="h-display text-[18px] md:text-[20px] lg:text-[22px] tracking-tight leading-[1.15] text-black/90">{n}</span>
+            </Reveal>
           ))}
         </div>
       </Section>
 
-      {/* 05 WHO THIS IS NOT FOR — dark, card grid */}
+      {/* 05 WHO THIS IS NOT FOR — dark, clean list */}
       <Section
         eyebrow="Who this is not for"
         num="05"
         title={<>Honest about who this isn't for.</>}
       >
-        <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
+        <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
           {whoThisIsNotFor.map((n, i) => (
-            <PointCard key={n} num={i + 1} text={n} variant="unfit" tone="dark" delay={i * 60} />
+            <Reveal key={n} delay={i * 50} as="div" className="border-t border-[color:var(--color-line)] py-5 flex items-baseline gap-5">
+              <span className="text-[color:var(--color-accent)] mono text-[13px] font-medium">{String(i + 1).padStart(2, "0")}</span>
+              <span className="h-display text-[18px] md:text-[20px] lg:text-[22px] tracking-tight leading-[1.15] text-[color:var(--color-fg)]">{n}</span>
+            </Reveal>
           ))}
         </div>
       </Section>
